@@ -1,0 +1,33 @@
+  # Kod _na_věk_-_IT_čtvrtek_Ukol_phyton_I.
+
+  # definování slova "main"
+def main():
+    while True:
+        try:
+            # počáteční zadáné info. od uživatele
+            vek = int(input('Kolik je ti let? '))
+
+            if vek >= 18:
+                print('Jsi dospělý.')
+                vek_za_pet_let = vek + 5
+                print('Za 5 let ti bude', vek_za_pet_let, 'let.')
+            else:
+                print('Jsi nezletilý.')
+
+            # Kontrola na abnormáolní věk
+            if vek > 100:
+                print('Hezký věk to ano, ale už to máš jen za pár.')
+             # Kontrola na invalidní info.
+            if vek < 0:
+                print('Nezadal si validní informaci.')
+            # funkce "reapeat" mi umožní nabídnout uživateli možnost restartu celého kodu, pro další zadávání hodnot
+            repeat = input("Chceš pokračovat? (ano/ne): ").lower()
+            # pakliže uživatel zvolí "ano" dojde k návratu pomocí již definované funkce
+            if repeat != "ano":
+                print("Čauko")
+                break
+        except ValueError:
+            print("Zadej prosím platné číslo.")
+
+if __name__ == "__main__":
+    main()
