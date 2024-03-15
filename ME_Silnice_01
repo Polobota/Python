@@ -1,0 +1,84 @@
+# Stavba domu
+'''
+Nejdříve musíme definovat nejmenší možný algoritmus stavby zdi. Teď se ho pokusíme identifikovat.
+'''
+# Import knihoven
+'''
+Zde importujeme knihovny s příkazy, které nejsou součástí python v Minecraft.
+'''
+from time import sleep
+
+# Definuj funkci postav stěnu
+def postav_radu(length, color):
+       if color == 0:
+           for width in range(5):
+               agent.give("black_concrete", 1, 1)
+               agent.destroy("down")
+               agent.place("down")
+               agent.destroy("right")
+               agent.move("right")
+       else:
+           for width in range(5):
+                if width == 2:
+                    agent.give("yellow_concrete", 1, 1)
+                    agent.destroy("down")
+                    agent.place("down")
+                    agent.destroy("right")
+                    agent.move("right")
+                else:
+                    agent.give("black_concrete", 1, 1)
+                    agent.destroy("down")
+                    agent.place("down")
+                    agent.destroy("right")
+                    agent.move("right")
+def vrat_se():
+    for width in range(5):
+        agent.move("left")
+
+def couvej():
+    agent.destroy("back")
+    agent.move("back")
+
+def silnice(length):
+    for count in range(length):
+        if count % 3 == 0:
+            color = 0
+        else:
+            color = 1
+        postav_radu(length,color)
+        vrat_se()
+        couvej()
+    '''
+    Tato funkce staví horizontálně směrem za agentem. Jsou v ní 3 příkazy.
+    '''
+
+# Definuj funkci otoč se
+def otoc_se():
+    '''
+    Tato funkce otáčí agenta na konci stavby stěny. Je v ní jeden příkaz.
+    '''
+
+# Main
+'''
+Zde se nachází spouštění našeho programu. Volám zde jednotlivé funkce.
+'''
+
+# Definuj event handler když je v chatu zpráva
+def on_player_message(message, sender, receiver, message_type):
+    '''
+    Tato funkce poslouchá herní chat a spouští programy podle kličových slov, která jsou definovaná níže:
+    
+    stena - agent staví 1 opakování algoritmu stěny. Pro testování.
+    otoc - otočí se 1 krát. Pro testování.
+    '''
+    slova = message.split()
+
+    # Když je první slovo stěna, proveď stavbu stěny
+    if slova[0] == "silnice":
+        sleep(1)
+        silnice(int(slova[1]))
+    # Když je první slovo otoč, otoč se
+    elif slova[0] == "tel":
+        sleep(1)
+        agent.teleport()
+
