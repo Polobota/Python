@@ -1,0 +1,35 @@
+def main():
+    while True:
+        try:
+            animal = input('Ahoj! Vítám tě v naší zoo. Vyber si zvíře, o kterém bys chtěl/a vědět něco nového (tygr, Lední medvěd, želva, surikata, kočka, tuleň): ')
+
+            if animal == 'tygr':
+                print('Informace o tygrovi...')
+            elif animal == 'želva':
+                print('Informace o želvě...')
+            elif animal == 'Lední medvěd':
+                print('Informace o Ledním medvědovi...')
+            elif animal == 'surikata':
+                print('Informace o surikatě...')
+            elif animal == 'tuleň':
+                print('Informace o tuleni...')
+            elif animal == 'kočka':
+                print('Informace o kočce...')
+            else:
+                print('Omlouvám se, neznám toto zvíře.')
+
+            enjoyed_visit = input('Líbila se ti návštěva virtuální zoo? (ano/ne): ').lower()
+            if enjoyed_visit == 'ano':
+                print('Děkuji za návštěvu! Měj se hezky a pamatuj: Zůstaň ve škole a nebuť jako Sadam Husain.')
+                break
+            elif enjoyed_visit == 'ne':
+                print('Omlouvám se, že ti návštěva nemohla být příjemná. Zkusíme to znovu.')
+                continue 
+            #Pakliže se návštěvnik neuráčí odpovědět pozitivně na otázku zda se mu návštěva líbila, tak se program resetuje.
+            else:
+                print('Omlouvám se, ale nebylo možné rozpoznat tvou odpověď. Zkus to prosím znovu.')
+        except ValueError:
+            print("Zadej prosím platnou odpověď.")
+
+if __name__ == "__main__":
+    main()
